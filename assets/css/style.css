@@ -4,9 +4,9 @@
   --bg-primary: #0b0f14;
   --bg-secondary: #111827;
   --bg-card: #0f172a;
-  --accent: #16c656; /* green */
+  --accent: #ffffff; /* green */
   --accent-soft: rgba(34, 197, 94, 0.15);
-  --accent-gradient: linear-gradient(135deg, #14e260, #09953c);
+  --accent-gradient: linear-gradient(135deg, #f6f6f6, #c9c9c9);
   --text-primary: #e5e7eb;
   --text-secondary: #9ca3af;
   --text-muted: #6b7280;
