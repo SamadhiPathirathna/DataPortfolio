@@ -1,104 +1,134 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
+/* ===================== ROOT VARIABLES ===================== */
 :root {
-  --bg-primary: #0b0f14;
-  --bg-secondary: #111827;
-  --bg-card: #0f172a;
-  --accent: #ffffff; /* green */
-  --accent-soft: rgba(34, 197, 94, 0.15);
-  --accent-gradient: linear-gradient(135deg, #f6f6f6, #c9c9c9);
-  --text-primary: #e5e7eb;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  --border-soft: rgba(255,255,255,0.08);
-  --shadow-soft: 0 10px 40px rgba(0,0,0,0.4);
-  --radius-lg: 20px;
-  --radius-md: 14px;
-  --radius-sm: 10px;
-  --color-brand: #356848;
-  --color-brand2: #477859;
+  /* Light Mode Colors */
+  --bg-main: #f3faf7;
+  --bg-card: #ffffff;
+  --bg-dark: #0e2f26;
+  --text-dark: #0b2a1f;
+  --text-muted: #557c6e;
+  --accent: #1fa67a;
+  --accent-dark: #158a65;
+  --accent-soft: rgba(31, 166, 122, 0.15);
+  --accent-gradient: linear-gradient(135deg, #1fa67a, #16a085);
+
+  --radius: 18px;
+  --shadow: 0 20px 40px rgba(0,0,0,0.08);
+  --shadow-soft: 0 10px 25px rgba(0,0,0,0.05);
 }
 
+/* Dark Mode */
+body.dark {
+  --bg-main: #0b0f14;
+  --bg-card: #111827;
+  --text-dark: #f3f3f3;
+  --text-muted: #cccccc;
+  --accent-soft: rgba(31, 166, 122, 0.25);
+}
+
+/* ===================== GLOBAL ===================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #0a1f10, #021507 100%);
-  color: var(--text-primary);
+  background: var(--bg-main);
+  color: var(--text-dark);
   line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
 }
 
-img { width: 100%; display: block; }
-
-h1,h2,h3,h4,h5,h6 {
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-p { color: var(--text-secondary); }
-
-a {
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-a:hover { color: var(--accent); }
-
-.full-height {
-  min-height: 100vh;
-  padding: 100px 0;
+/* ===================== NAVBAR ===================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-card);
+  padding: 1.2rem 4rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-soft);
+  transition: background 0.3s;
 }
 
-/* ================= NAVBAR ================= */
-.navbar {
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(12px);
-  border-right: 1px solid var(--border-soft);
+.logo {
+  font-weight: 800;
+  letter-spacing: 0.5px;
 }
 
-.navbar .nav-link {
-  color: var(--text-secondary);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 8px 0;
+.navbar nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
-.navbar .nav-link.active,
-.navbar .nav-link:hover {
+.navbar nav a:hover {
   color: var(--accent);
 }
 
-@media (min-width: 992px) {
-  .navbar {
-    min-height: 100vh;
-    width: 260px;
-  }
-
-  #content-wrapper {
-    padding-left: 260px;
-  }
+.btn-outline {
+  border: 2px solid var(--accent);
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-/* ================= PROFILE IMAGE ================= */
-.section__pic-container {
-  display: flex;
-  justify-content: center;
-  margin: 1.5rem 0;
+.btn-outline:hover {
+  background: var(--accent);
+  color: #fff;
 }
 
+/* ===================== HERO ===================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  padding: 6rem 4rem;
+  align-items: center;
+}
+
+.intro {
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.hero h3 {
+  margin: 0.6rem 0 1.2rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.hero-desc {
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.hero-actions a {
+  margin-right: 1rem;
+}
+
+/* Profile Image */
 .profile-img-wrapper {
-  width: 160px;
-  height: 160px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   padding: 4px;
   background: var(--accent-gradient);
@@ -109,97 +139,14 @@ a:hover { color: var(--accent); }
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--bg-secondary);
+  border: 4px solid var(--bg-main);
 }
 
-/* ================= BUTTONS ================= */
-.btn {
-  padding: 12px 28px;
-  border-radius: 999px;
-  font-weight: 700;
-  border: none;
-  transition: 0.3s ease;
+/* ===================== SOCIAL ICONS ===================== */
+.social-icons {
+  margin-top: 1.5rem;
 }
 
-.btn-brand {
-  background: var(--accent-gradient);
-  color: #020617;
-  box-shadow: 0 8px 30px rgba(34,197,94,0.35);
-}
-
-.btn-brand:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(34,197,94,0.5);
-}
-
-.link-custom {
-  font-weight: 600;
-  position: relative;
-}
-
-.link-custom::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: 0.3s;
-}
-
-.link-custom:hover::after { width: 100%; }
-
-/* ================= CARDS ================= */
-.card-custom {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-  backdrop-filter: blur(6px);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: 0.4s ease;
-  box-shadow: var(--shadow-soft);
-}
-
-.card-custom:hover {
-  transform: translateY(-10px);
-  border-color: var(--accent-soft);
-}
-
-.card-custom-image {
-  overflow: hidden;
-}
-
-.card-custom-image img {
-  transition: 0.5s ease;
-}
-
-.card-custom:hover img {
-  transform: scale(1.08);
-}
-
-.card-custom-content {
-  padding: 1.5rem;
-}
-
-.card-custom-content h4 {
-  margin-bottom: 0.5rem;
-}
-
-/* ================= ICON BOX ================= */
-.iconbox {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  background: var(--accent-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  color: var(--accent);
-}
-
-/* ================= SOCIAL ICONS ================= */
 .social-icons a {
   width: 42px;
   height: 42px;
@@ -207,162 +154,439 @@ a:hover { color: var(--accent); }
   align-items: center;
   justify-content: center;
   background: var(--bg-card);
-  border: 1px solid var(--border-soft);
   border-radius: 50%;
   font-size: 20px;
   margin-right: 10px;
-  transition: 0.3s ease;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
   background: var(--accent-gradient);
-  color: #020617;
+  color: #fff;
   transform: translateY(-4px);
 }
 
-/* ================= ABOUT / EXPERIENCE ================= */
-.bg-base {
-  background: var(--bg-card);
-  border: 1px solid var(--border-soft);
-}
-
-.shadow-effect {
-  transition: 0.4s ease;
-}
-
-.shadow-effect:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-}
-
-/* ================= CONTACT FORM ================= */
-#contact .form-control {
-  background: var(--bg-card);
-  border: 1px solid var(--border-soft);
-  color: var(--text-primary);
-  border-radius: var(--radius-sm);
-}
-
-#contact .form-control::placeholder { color: var(--text-muted); }
-
-#contact .form-control:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--accent-soft);
-  border-color: var(--accent);
-}
-
-#contact button {
-  margin-top: 10px;
-}
-
-/* ================= FOOTER ================= */
-footer {
-  border-top: 1px solid var(--border-soft);
-}
-
-/* ================= ANIMATIONS ================= */
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
-}
-
-.profile-img-wrapper { animation: float 6s ease-in-out infinite; }
-
-
-/* ================= SKILLS TAGS ================= */
-
-.skills-highlight {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.skill-tag {
-  padding: 8px 16px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  color: var(--accent);
-  background: linear-gradient(
-    135deg,
-    rgba(34, 197, 94, 0.12),
-    rgba(74, 222, 128, 0.08)
-  );
-  border: 1px solid rgba(34, 197, 94, 0.35);
+/* ===================== BUTTONS ===================== */
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  padding: 0.75rem 1.6rem;
   border-radius: 999px;
-  backdrop-filter: blur(6px);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
   transition: all 0.3s ease;
 }
 
-.skill-tag:hover {
-  background: var(--accent-gradient);
-  color: #020617;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.45);
+.btn-primary:hover {
+  background: var(--accent-dark);
 }
 
-/* ===== PROJECT CARD ENHANCEMENTS ===== */
-
-.project-desc {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  margin-bottom: 12px;
-}
-
-.project-metrics {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 16px;
-}
-
-.project-metrics li {
-  font-size: 0.85rem;
-  margin-bottom: 6px;
-  color: #c7f0d3;
-}
-
-.project-actions {
-  display: flex;
-  gap: 10px;
-}
-
-/* ===== SKILLS BARS ===== */
-
-.skills-bars {
-  margin-top: 30px;
-}
-
-.skill {
-  margin-bottom: 14px;
-}
-
-.skill span {
-  font-size: 0.85rem;
+.btn-secondary {
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
   font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.bar {
-  width: 100%;
-  height: 8px;
-  background: #0f3a42;
-  border-radius: 6px;
+.btn-secondary:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ===================== SECTIONS ===================== */
+.section {
+  padding: 5.5rem 4rem;
+}
+
+.section-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+}
+
+.section-title span {
+  color: var(--accent);
+}
+
+.center {
+  text-align: center;
+}
+
+/* ===================== ABOUT ===================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+
+.about-info div strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ===================== STATS ===================== */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.stats div {
+  background: var(--bg-card);
+  padding: 1.4rem 1.8rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  min-width: 120px;
+}
+
+.stats h3 {
+  color: var(--accent);
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.stats p {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ===================== SKILLS CARDS - ANALYST STYLE ===================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+}
+
+.skill-card {
+  background: var(--bg-card);
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05), 0 0 10px var(--accent-soft);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.3s ease;
+  position: relative;
   overflow: hidden;
-  margin-top: 6px;
 }
 
-.fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--color-brand), var(--color-brand2));
-  animation: grow 1.6s ease forwards;
+/* Subtle diagonal gradient overlay for analyst feel */
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, rgba(31,166,122,0.05), rgba(31,166,122,0));
+  transform: rotate(25deg);
+  pointer-events: none;
 }
 
-.powerbi { width: 90%; }
-.sql { width: 85%; }
-.python { width: 75%; }
-.excel { width: 88%; }
+/* Icon styling */
+.skill-card i {
+  font-size: 2.6rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: block;
+}
 
-@keyframes grow {
-  from { width: 0; }
+/* Skill title */
+.skill-card h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+/* Skill list styling */
+.skill-card ul {
+  list-style: none;
+  margin-top: 1rem;
+  padding-left: 0;
+}
+
+.skill-card ul li {
+  margin-bottom: 0.6rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+/* Small analytical "dot" indicator */
+.skill-card ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* Hover effect: floating + glow */
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12), 0 0 20px var(--accent-soft);
+  background: var(--bg-card);
+}
+
+/* Optional: small animated bar behind each skill for data vibe */
+.skill-card ul li span {
+  display: block;
+  height: 4px;
+  width: 0;
+  background: var(--accent);
+  border-radius: 4px;
+  margin-top: 2px;
+  animation: growBar 1s ease forwards;
+}
+
+@keyframes growBar {
+  to { width: 60%; } /* You can vary this per skill if you add inline style width */
+}
+
+
+/* ===================== PROJECT CARDS ===================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.project-card {
+  background: var(--bg-card);
+  padding: 1.6rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.project-card h4 {
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+
+.project-card .link-custom {
+  font-weight: 600;
+  position: relative;
+  color: var(--accent);
+  text-decoration: none;
+  margin-left: 0.8rem;
+}
+
+.project-card .link-custom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: 0.3s;
+}
+
+.project-card .link-custom:hover::after {
+  width: 100%;
+}
+
+/* ===================== CONTACT ===================== */
+.contact-box {
+  max-width: 600px;
+  margin: auto;
+  background: var(--bg-card);
+  padding: 3rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.contact-box input,
+.contact-box textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: var(--bg-main);
+  color: var(--text-dark);
+  transition: all 0.3s;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.contact-box button {
+  width: 100%;
+}
+
+/* ===================== CONTACT SOCIAL ICONS ===================== */
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.contact-info a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  color: var(--text-dark);
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.contact-info a:hover {
+  background: var(--accent-gradient);
+  color: #fff;
+  transform: translateY(-4px);
+}
+
+/* Hide text in contact links (only icons) */
+.contact-info a span {
+  display: none;
+}
+/*===================== FOOTER ===================== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  margin-top: 2rem;
+}
+
+/* ===================== MEDIA QUERIES ===================== */
+@media(max-width: 992px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .profile-img-wrapper {
+    margin: 2rem auto 0;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid, .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===================== DARK/LIGHT TOGGLE ===================== */
+#themeToggle {
+  background: var(--bg-card);
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+}
+
+#themeToggle:hover {
+  background: var(--accent-gradient);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* ===================== FLOATING PROFILE IMAGE ===================== */
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(5px, -8px) rotate(-1deg);
+  }
+  50% {
+    transform: translate(-5px, 10px) rotate(1deg);
+  }
+  75% {
+    transform: translate(8px, -5px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+/* Profile Image Floating + Glow */
+.profile-img-wrapper {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  padding: 4px;
+  background: var(--accent-gradient);
+  box-shadow: 0 0 40px var(--accent-soft);
+  animation: float 6s ease-in-out infinite;
+  transition: box-shadow 0.3s ease;
+}
+
+/* ===================== FLOATING SECTIONS ===================== */
+
+
+/* Apply gentle floating and glow to cards */
+.skill-card,
+.project-card,
+.contact-box,
+.stats div {
+  animation: float-card 8s ease-in-out infinite;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05), 0 0 15px var(--accent-soft);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.skill-card:hover,
+.project-card:hover,
+.contact-box:hover,
+.stats div:hover {
+  box-shadow: 0 0 30px var(--accent-soft), 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* ===================== HERO TEXT GLOW ===================== */
+.hero h1, .hero h3, .hero-desc {
+  transition: text-shadow 0.3s ease;
+}
+
+.hero h1:hover, .hero h3:hover, .hero-desc:hover {
+  text-shadow: 0 0 12px var(--accent-soft);
 }
